@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+void GJE(int n, float A[n][n], float num[n]){
+    int r, c;
+    float temp;
+    for(c = 0; c < n; c++){
+        for(r = 0; r < n; r++){
+            if(c != r && A[r][c] != 0){
+                temp = A[r][c] / A[c][c];
+                num[r] = num[r] - (temp * num[c]);
+                
+                for(int k = 0; k < n; k++){
+                    A[r][k] = A[r][k] - (temp * A[c][k]);
+                }
+            }
+        }
+    }
+    
+    for(int r = 0; r < n; r++){
+        for(int c = 0; c < n; c++){
+            printf("%.2f ", A[r][c] / A[r][r]);
+        }
+        printf("\n");
+    } printf("\n");
+    
+    for(int x = 0; x < n; x++){
+        printf("X[%d] = %.2f\n", x+1, num[x] / A[x][x]);
+    }
+}
+
+int main() {
+    int n;
+    printf("Input size of matrix: ");
+    scanf("%d", &n);
+    float A[n][n], num[n];
+
+    int r, c;
+    for(int r = 0; r < n; r++){
+        for(int c = 0; c < n; c++){
+            printf("Input A[%d][%d]: ", r+1, c+1);
+            scanf("%f", &A[r][c]);
+        }
+        printf("Input num[%d][1]: ", r+1);
+        scanf("%f", &num[r]);
+        printf ("\n");
+    }
+    
+    GJE(n, A, num);
+}
