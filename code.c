@@ -14,23 +14,13 @@ void GJE(int n, float A[n][n], float num[n])
                 num[r] = num[r] - (temp * num[c]);
 
                 for (int k = 0; k < n; k++)
-                {
+                {  
                     A[r][k] = A[r][k] - (temp * A[c][k]);
                 }
             }
         }
     }
-
-    for (int r = 0; r < n; r++)
-    {
-        for (int c = 0; c < n; c++)
-        {
-            printf("%.2f ", A[r][c] / A[r][r]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-
+    
     for (int x = 0; x < n; x++)
     {
         printf("X[%d] = %.2f\n", x + 1, num[x] / A[x][x]);
