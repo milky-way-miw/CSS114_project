@@ -2,33 +2,32 @@
 
 #include <stdio.h>
 
-void GJE(int n, float A[n][n], float num[n])
-{
-    int r, c;
-    float temp;
-    for (c = 0; c < n; c++)
-    {
-        for (r = 0; r < n; r++)
+    void GJE(int n, float A[n][n], float num[n]){
+        int r, c;
+        float temp;
+        for (c = 0; c < n; c++)
         {
-            if (c != r && A[r][c] != 0)
+            for (r = 0; r < n; r++)
             {
-                temp = A[r][c] / A[c][c];
-                num[r] = num[r] - (temp * num[c]);
+                if (c != r && A[r][c] != 0)
+                {
+                    temp = A[r][c] / A[c][c];
+                    num[r] = num[r] - (temp * num[c]);
 
-                for (int k = 0; k < n; k++)
-                {  
-                    A[r][k] = A[r][k] - (temp * A[c][k]);
+                    for (int k = 0; k < n; k++)
+                    {  
+                        A[r][k] = A[r][k] - (temp * A[c][k]);
+                    }
                 }
             }
+         }
+    
+        for (int x = 0; x < n; x++)
+        {
+            printf("X[%d] = %.2f\n", x + 1, num[x] / A[x][x]);
         }
     }
     
-    for (int x = 0; x < n; x++)
-    {
-        printf("X[%d] = %.2f\n", x + 1, num[x] / A[x][x]);
-    }
-}
-
 int main()
 {
     int n;
