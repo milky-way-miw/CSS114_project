@@ -1,7 +1,5 @@
-# Explain CSS114_project
-
-#include <stdio.h>
-
+    #include <stdio.h>
+# 2. GJE
     void GJE(int n, float A[n][n], float num[n]){
         int r, c;
         float temp;
@@ -27,32 +25,34 @@
             printf("X[%d] = %.2f\n", x + 1, num[x] / A[x][x]);
         }
     }
-    
-int main()
-{
-    int n;
-    printf("Enter matrix size n: ");
-    scanf("%d", &n);
 
-    float A[n][n], num[n];
-
-    printf("Enter matrix A (%d x %d):\n", n, n);
-    for (int i = 0; i < n; i++)
+# Main
+ 
+    int main()
     {
-        for (int j = 0; j < n; j++)
+        int n;
+        printf("Enter matrix size n: ");
+        scanf("%d", &n);
+
+        float A[n][n], num[n];
+
+        printf("Enter matrix A (%d x %d):\n", n, n);
+        for (int i = 0; i < n; i++)
         {
-            scanf("%f", &A[i][j]);
+            for (int j = 0; j < n; j++)
+            {
+                scanf("%f", &A[i][j]);
+            }
         }
-    }
 
-    printf("Enter num (%d values):\n", n);
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%f", &num[i]);
-    }
-    printf("\n");
+        printf("Enter num (%d values):\n", n);
+        for (int i = 0; i < n; i++)
+        {
+            scanf("%f", &num[i]);
+        }
+        printf("\n");
 
-    printf("GJE is:\n");
-    GJE(n, A, num);
-    return 0;
-}
+        printf("GJE is:\n");
+        GJE(n, A, num);
+        return 0;
+    }
