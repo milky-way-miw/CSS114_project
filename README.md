@@ -109,28 +109,28 @@
         printf("Enter matrix size n: ");
         scanf("%d", &n);
 
-        float A[n][n], num[n];
+        double A[n][n], num[n];
 
         printf("Enter matrix A (%d x %d):\n", n, n);
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                scanf("%f", &A[i][j]);
+                scanf("%lf", &A[i][j]);
             }
         }
 
         printf("Enter num (%d values):\n", n);
         for (int i = 0; i < n; i++)
         {
-            scanf("%f", &num[i]);
+            scanf("%lf", &num[i]);
         }
         printf("\n");
 
         printf("GJE is:\n");
-        GJE(n, A, num);    เรียกใฃ้ฟังก์ชัน GJE
+        GJE(n, A, num);    //เรียกใฃ้ฟังก์ชัน GJE
 
         printf("LU is:\n");
-        LU(n, A, num);    เรียกใช้ฟิงก์ชัน LU
+        LU(n, A, num);    //เรียกใช้ฟิงก์ชัน LU
         return 0;
     }
