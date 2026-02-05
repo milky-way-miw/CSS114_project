@@ -1,37 +1,24 @@
 #include <stdio.h>
 
 //2.
-void GJE(int n, double A[n][n], double num[n])
-{
-    int r, c, k;
-    double temp, pivot;
-    for (c = 0; c < n; c++)
-    {
-        pivot = A[c][c];
-        for (k = 0; k < n; k++)
-        {
-            A[c][k] = A[c][k] / pivot;
-        }
-        num[c] = num[c] / pivot;
-        
-        for (r = 0; r < n; r++)
-        {
-            if (c != r && A[r][c] != 0)
-            {
-                temp = A[r][c];
+void GJE(int n, double A[n][n], double num[n]) {
+    int r, c;
+    double temp;
+    for (c = 0; c < n; c++) {
+        for (r = 0; r < n; r++) {
+            if (c != r && A[r][c] != 0) {
+                temp = A[r][c] / A[c][c];
                 num[r] = num[r] - (temp * num[c]);
 
-                for (int k = 0; k < n; k++)
-                {  
+                for (int k = 0; k < n; k++) {
                     A[r][k] = A[r][k] - (temp * A[c][k]);
                 }
             }
         }
     }
-    
-    for (int x = 0; x < n; x++)
-    {
-        printf("X[%d] = %.2f\n", x + 1, x[x]);
+
+    for (int x = 0; x < n; x++) {
+        printf("X[%d] = %.6f\n", x + 1, num[x] / A[x][x]);
     }
 }
 
