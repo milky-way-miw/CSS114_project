@@ -54,7 +54,7 @@ void GJE(int n, double A[n][n], double num[n]) {
     int r, c;
     double temp;
 
-    //
+    // เปลี่ยนค่านอกจากแนวทแยงให้เป็น 0
     for (c = 0; c < n; c++) {
         for (r = 0; r < n; r++) {
             if (c != r && A[r][c] != 0) {
@@ -68,8 +68,9 @@ void GJE(int n, double A[n][n], double num[n]) {
         }
     }
 
+    // แสดงผล
     for (int x = 0; x < n; x++) {
-        printf("X[%d] = %.6f\n", x + 1, num[x] / A[x][x]);
+        printf("X[%d] = %.2f\n", x + 1, num[x] / A[x][x]);
     }
 }
 
@@ -78,6 +79,8 @@ void LU(int n, double U[n][n], double num[n]){
     int r, c;
     double L[n][n];
     double temp;
+    
+    //เปลี่ยนค่าให้เป็น 0
     for (c = 0; c < n; c++)
     {
         for (r = 0; r < n; r++)
@@ -99,6 +102,7 @@ void LU(int n, double U[n][n], double num[n]){
         }
     }
     
+    //แสดงผล ของเมทริก L
     printf("L = \n");
     for (int r = 0; r < n; r++)
     {
@@ -109,7 +113,8 @@ void LU(int n, double U[n][n], double num[n]){
         printf("\n");
     }
     printf("\n");
-    
+
+    //แสดงผล ของเมทริก U
     printf("U =\n");
     for (int r = 0; r < n; r++)
     {
@@ -122,22 +127,25 @@ void LU(int n, double U[n][n], double num[n]){
     printf("\n");
     
     double x[n], y[n];
+    //จากสูตร Ly = b
     for (int i = 0; i < n; i++) {
         double sum_L = 0.0;
         for (int j = 0; j < i; j++) {
-            sum_L += L[i][j] * y[j];
+            sum_L = sum_L + L[i][j] * y[j];
         } 
         y[i] = num[i] - sum_L;
     }
     
+    //จากสูตร Ux = y
     for (int i = n-1; i >= 0; i--) {
         double sum_U = 0.0;
         for (int j = i+1; j < n; j++) {
-            sum_U += U[i][j] * x[j];
+            sum_U = sum_U + U[i][j] * x[j];
         } 
         x[i] = (y[i] - sum_U) / U[i][i];
     }
     
+    //แสดงผล
     for (int i = 0; i < n; i++) {
         printf("x[%d] = %.2f\n", i+1, x[i]);
     }
@@ -147,11 +155,12 @@ void LU(int n, double U[n][n], double num[n]){
 int main()
 {
     int n;
+    //รับค่าขนาดของเมทริก A
     printf("Enter matrix size n: ");
     scanf("%d", &n);
 
     double A[n][n], num[n];
-
+    //รับค่าเมทริก A
     printf("Enter matrix A (%d x %d):\n", n, n);
     for (int i = 0; i < n; i++)
     {
@@ -161,6 +170,7 @@ int main()
         }
     }
 
+    //รับค่าเมริก num
     printf("Enter num (%d values):\n", n);
     for (int i = 0; i < n; i++)
     {
@@ -168,14 +178,17 @@ int main()
     }
     printf("\n");
 
+    //เรียกใช้ฟังก์ชัน GE
     printf("GE is:\n");
     gaussElimination(n, A, num);
     printf("\n");
 
+    //เรียกใช้ฟังก์ชัน GJE
     printf("GJE is:\n");
     GJE(n, A, num);
     printf("\n");
 
+    //เรียกใช้ฟังก์ชัน LU
     printf("LU is:\n");
     LU(n, A, num);
     return 0;
