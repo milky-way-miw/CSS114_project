@@ -5,6 +5,7 @@ int main() {
     double A[3][3] ,b[3];
     double det, inv[3][3], x[3];
     
+    //รับค่าเมทริก A
     printf("Enter matrix A (3 x 3):\n");
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
@@ -12,8 +13,11 @@ int main() {
         }
     }
     
+    //เช็คว่ามีเมทริก b มั้ย
     printf("Enter 1 if have b matrix or 0 if dont have b matrix :");
     scanf("%d",&b_matrix);
+
+    //ถ้ามีให้รับค่าเมทริก b
     if(b_matrix == 1){
         printf("Enter b matrix (3 values):\n");
         for (int i = 0; i < 3; i++){
@@ -71,6 +75,7 @@ int main() {
         }
     }
 
+    //แสดงผล
     printf("Inverse Matrix =\n");
     for (int i = 0; i < 3; i++)
     {
