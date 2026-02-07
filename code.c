@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//1.
 void gaussElimination(int n, double A[n][n], double b[n]){
 double x[n];
 for (int i = 0; i < n - 1; i++){ // ไล่ทีละคอลัมน์ (pivot column)
@@ -52,6 +53,8 @@ for (int i = 0; i < n; i++){
 void GJE(int n, double A[n][n], double num[n]) {
     int r, c;
     double temp;
+
+    //
     for (c = 0; c < n; c++) {
         for (r = 0; r < n; r++) {
             if (c != r && A[r][c] != 0) {
@@ -167,9 +170,11 @@ int main()
 
     printf("GE is:\n");
     gaussElimination(n, A, num);
+    printf("\n");
 
     printf("GJE is:\n");
     GJE(n, A, num);
+    printf("\n");
 
     printf("LU is:\n");
     LU(n, A, num);
